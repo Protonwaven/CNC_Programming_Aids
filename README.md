@@ -1,2 +1,2 @@
-# CNC_Programming_Aids
-A collection of programs to assist in writing programs for CNC machinery. 
+# CNC Programmer Aids 
+A collection of programs to assist in writing and managing of CNC programs.
