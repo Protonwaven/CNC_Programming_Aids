@@ -19,10 +19,13 @@ jasperWeekePath, jasperWeeke, jas = machineFilePaths.jasper_parts(), False, 'Jas
 fvWeekePath, fvWeeke, fv = machineFilePaths.fordsvile_parts(), False, 'FVWeeke'
 bazPath, baz, BAZ = machineFilePaths.baz_parts(), False, 'BAZ'
 abdPath, abd, ABD = machineFilePaths.abd_parts(), False, 'Homaghbore'
+bimaPath, bima, BIMA = machineFilePaths.bima_parts(), False, 'Bima'
+morbPath, morb, MORB = machineFilePaths.morb_parts(), False, 'Morb'
+# isFileOpen = False
 
-allPaths = [vantechPath, jasperWeekePath, fvWeekePath, bazPath, abdPath]
-foundOnMachine = [vantech, jasperWeeke, fvWeeke, baz, abd]
-machineNames = [van, jas, fv, BAZ, ABD]
+allPaths = [vantechPath, jasperWeekePath, fvWeekePath, bazPath, abdPath, bimaPath, morbPath]
+foundOnMachine = [vantech, jasperWeeke, fvWeeke, baz, abd, bima, morb]
+machineNames = [van, jas, fv, BAZ, ABD, BIMA, MORB]
 fileList = {}
 
 # input for drawing look up
@@ -31,9 +34,10 @@ fileList = {}
 # look up.
 try:
     if int(pyperclip.paste()) >= 6 & int(pyperclip.paste()) <= 8:
-        use_clipboard = input('Type anything to look up ' + str(pyperclip.paste()) + '. ')
-        if use_clipboard:
-            drawingNumber = pyperclip.paste()
+        use_clipboard = input('Type 1 to look up ' + str(pyperclip.paste()) + '\nElse, type in the drawing number you '
+                                                                              'want to find.\n')
+        if use_clipboard == 1:
+            drawingNumber = pyperclip.paste().strip()
         else:
             drawingNumber = input(str('Please enter the drawing number you want to find.\n'))
     else:
@@ -43,11 +47,12 @@ except ValueError:
 
 # Begin looking for drawing number in machine files
 while drawingNumber:
+    drawingNumber.strip()
     fileListKey = 1
     for path in allPaths:
         for rootDir, subDir, filenames in os.walk(path):
             for filename in filenames:
-                if filename.endswith('.mpr') and filename.startswith(drawingNumber):
+                if (filename.endswith('.mpr') or filename.endswith('.ard')) and filename.startswith(drawingNumber):
                     for i in range(len(machineNames)):
                         if machineNames[i] in path:
                             fullpath = os.path.join(rootDir, filename)
@@ -58,19 +63,25 @@ while drawingNumber:
                             fileListKey += 1
 
     # If drawing doesn't exist, offer to make it.
-    while not any(foundOnMachine):
+    if not any(foundOnMachine):
         create_file = input('Would you like to create ' + drawingNumber + '?\nOr hit enter to escape.\n')
-        if create_file:
-            os.startfile("C:\\Users\\scasey\\gen_rec2.bat")
-        break
+        try:
+            if create_file:
+                os.startfile("C:\\Users\\scasey\\gen_rec2.bat")
+            break
+        except FileNotFoundError:
+            print('Nice try but you don\'t have access to this function.')
+            break
 
     # Ask which machines, if any, the user wants to open the file up from and prompt for next file to look up
+    isFileOpen = False
     while any(foundOnMachine):
-        print('Type the line number to open the file or just hit enter to look up another file.')
+        print('Type the line number to open the file or just hit enter to look up a different file.')
+        # Input will be numbers, but they will be treated has strings, not integers.
         fileToOpen = input(str(''))
         if not fileToOpen:
             break
         elif int(fileToOpen) in fileList.keys():
             os.startfile(fileList.get(int(fileToOpen)))
             print('Opening ' + drawingNumber + ' from line ' + fileToOpen)
-    drawingNumber = input(str('Please enter the drawing number you want to find.\nOr hit enter to escape.\n'))
+    drawingNumber = input(str('Please enter the drawing number you want to find.\nOr hit enter to end the program.\n'))
