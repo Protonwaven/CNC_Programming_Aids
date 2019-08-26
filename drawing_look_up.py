@@ -1,12 +1,17 @@
-""" A program to see which machines a drawing is on, if any. Let the user know, and give them the option to open the
+"""
+    A program to see which machines a drawing is on, if any. Let the user know, and give them the option to open the
     .mpr file if they choose.
 
     Inputs:
         drawingNumber -- This is the drawing number excluding any revision information.
+        import from windows clipboard -- This option is automatic. It the clipboard is between 6 - 8 numbers long it
+        will prompt with the option to press 1 and look up that drawing.
 
     Outputs:
-        A printed list of which machines the drawing is on, if none then it will offer to create file using Gen_rec.py.
-        The option to open the .mpr file on one of those machines from the terminal will be there, if it exists.
+        A printed list of which machines the drawing is on (along with date/time of last file modification), if none
+        then it will offer to create file using Gen_rec.py. If Gen_rec.py is not available, the user will be notified
+        and the program will move on. The option to open the .mpr file on one of those machines from the terminal will
+        be there, if it exists.
 """
 import os
 import time
@@ -21,7 +26,6 @@ bazPath, baz, BAZ = machineFilePaths.baz_parts(), False, 'BAZ'
 abdPath, abd, ABD = machineFilePaths.abd_parts(), False, 'Homaghbore'
 bimaPath, bima, BIMA = machineFilePaths.bima_parts(), False, 'Bima'
 morbPath, morb, MORB = machineFilePaths.morb_parts(), False, 'Morb'
-# isFileOpen = False
 
 allPaths = [vantechPath, jasperWeekePath, fvWeekePath, bazPath, abdPath, bimaPath, morbPath]
 foundOnMachine = [vantech, jasperWeeke, fvWeeke, baz, abd, bima, morb]
@@ -29,7 +33,7 @@ machineNames = [van, jas, fv, BAZ, ABD, BIMA, MORB]
 fileList = {}
 
 # input for drawing look up
-# first option is to use the clipboard. Try/Except to validate input is an integer, and then confirm length of input.
+# first option is to use the clipboard. Try/Except to validate input is an integer, and confirm length of input.
 # if clipboard isn't validated or user doesn't confirm look up by entering text, then ask for the drawing number to
 # look up.
 try:
