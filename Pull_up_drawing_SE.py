@@ -16,7 +16,7 @@ import pyperclip
 # Offer to use the clipboard, or manually type in drawing number to open in SE
 try:
     if int(pyperclip.paste()) >= 6 & int(pyperclip.paste()) <= 8:
-        use_clipboard = input('Type "1" to look up ' + str(pyperclip.paste()) + '\nIF not, just type in the drawing '
+        use_clipboard = input('Type "1" to look up ' + str(pyperclip.paste()) + '\nIf not, just type in the drawing '
                                                                                 'number.\n')
         if use_clipboard == '1':
             drawingNumber = pyperclip.paste()
