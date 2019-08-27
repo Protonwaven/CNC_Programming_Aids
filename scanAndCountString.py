@@ -1,5 +1,5 @@
 """
-A program to search all .mpr file within a specific directory for a certin string, commonly a component name, and
+A program to search all .mpr file within a specific directory for a certain string, commonly a component name, and
 count how many times it appears. Then print the results to a new file and open file for review.
 
 Inputs:
