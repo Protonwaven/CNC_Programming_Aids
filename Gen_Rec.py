@@ -1,6 +1,7 @@
-""" Terminal Based program to create a basic rectangle program. Depending on the machine you enter will prompt for
-different options. Currently supported machines are the Vantechs, Jasper and Fordsville Weeke, and the ABD. After
-generating the generated file will open in WoodWop for review.
+"""
+    Terminal Based program to create a basic rectangle program. Depending on the machine you enter will prompt for
+    different options. Currently supported machines are the Vantechs, Jasper and Fordsville Weeke, and the ABD. After
+    generating the generated file will open in WoodWop for review.
 
 Inputs:
     Almost all inputs are numbers, but are treated has string since the generated file is all text.
