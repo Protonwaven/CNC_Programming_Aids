@@ -1,5 +1,4 @@
-"""
-    Enter a pathway to scan, a string to find and string if replace text found.
+"""Enter a pathway to scan, a string to find and string if replace text found.
 
 Inputs:
     scan_folder -- the absolute pathway to the folder you wish to scan reasonable checks are made to ensure format

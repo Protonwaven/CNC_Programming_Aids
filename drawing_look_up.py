@@ -1,17 +1,16 @@
-"""
-    A program to see which machines a drawing is on, if any. Let the user know, and give them the option to open the
-    .mpr file if they choose.
+"""A program to see which machines a drawing is on, if any. Let the user know, and give them the option to open the
+.mpr file if they choose.
 
-    Inputs:
-        drawingNumber -- This is the drawing number excluding any revision information.
-        import from windows clipboard -- This option is automatic. It the clipboard is between 6 - 8 numbers long it
-        will prompt with the option to press 1 and look up that drawing.
+Inputs:
+    drawingNumber -- This is the drawing number excluding any revision information.
+    import from windows clipboard -- This option is automatic. It the clipboard is between 6 - 8 numbers long it
+    will prompt with the option to press 1 and look up that drawing.
 
-    Outputs:
-        A printed list of which machines the drawing is on (along with date/time of last file modification), if none
-        then it will offer to create file using Gen_rec.py. If Gen_rec.py is not available, the user will be notified
-        and the program will move on. The option to open the .mpr file on one of those machines from the terminal will
-        be there, if it exists.
+Outputs:
+    A printed list of which machines the drawing is on (along with date/time of last file modification), if none
+    then it will offer to create file using Gen_rec.py. If Gen_rec.py is not available, the user will be notified
+    and the program will move on. The option to open the .mpr file on one of those machines from the terminal will
+    be there, if it exists.
 """
 import os
 import time

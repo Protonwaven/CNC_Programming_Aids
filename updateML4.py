@@ -1,13 +1,11 @@
-"""
-    A program to update the ML4 files from the ML4 folder on common and sending it to all machines if the Common version
-    has been modified more recently than the version on the machine. This should reduce unnecessary updating.
+"""A program to update the ML4 files from the ML4 folder on common and sending it to all machines if the Common version
+has been modified more recently than the version on the machine. This should reduce unnecessary updating.
 
-    Input:
-        None.
+Input:
+    None.
 
-    Output:
-        A print out in the terminal of all files that have been updated.
-
+Output:
+    A print out in the terminal of all files that have been updated.
 """
 
 import os

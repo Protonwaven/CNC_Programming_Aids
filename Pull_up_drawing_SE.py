@@ -1,14 +1,13 @@
-"""
-    A quick script to pull up a drawing in Solid Edge using GUI automation. SE should be already open and logged into
-    or else the commands will not work.
+""" A quick script to pull up a drawing in Solid Edge using GUI automation. SE should be already open and logged into
+or else the commands will not work.
 
-    Inputs:
-        drawingNumber -- This is the drawing number excluding any revision information.
-        import from windows clipboard -- This option is automatic. It the clipboard is between 6 - 8 numbers long it
-        will prompt with the option to press 1 and look up that drawing.
+Inputs:
+    drawingNumber -- This is the drawing number excluding any revision information.
+    import from windows clipboard -- This option is automatic. It the clipboard is between 6 - 8 numbers long it
+    will prompt with the option to press 1 and look up that drawing.
 
-    Outputs:
-        Opening SolidEdge to the input drawing.
+Outputs:
+    Opening SolidEdge to the input drawing.
 """
 import pyautogui
 import pyperclip
