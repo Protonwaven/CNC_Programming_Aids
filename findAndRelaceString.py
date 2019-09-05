@@ -13,16 +13,17 @@ Outputs:
 """
 import os
 import re
-import time
 import sys
+import logging
+
+logging.basicConfig(filename='findAndReplaceString.log', format='%(asctime)s - %(message)s', level=logging.WARNING)
 
 # Enter path and check input for standard pathway format
 scan_folder = input('Enter the absolute path to scan:\n')
 validate_path_regex = re.compile(r'[a-z,A-Z]:\\?(\\?\w*\\?)*')
 mo = validate_path_regex.search(scan_folder)
 if mo is None:
-    print('Path is not valid. Please re-enter path.\n')
-    time.sleep(10)
+    logging.warning('Entered file path is not valid.')
     sys.exit()
 
 os.chdir(scan_folder)
@@ -45,7 +46,6 @@ permission = input('Please confirm you want to replace: \n'
                    + replace_string + ' in ' + scan_folder + ' directory.'
                    + '\n\nType "yes" to continue.\n')
 if permission == 'yes':
-    start = time.time()
     change_count = 0
     # Context manager for results file.
     with open('find_and_replace_results.txt', 'w') as results:
@@ -70,8 +70,6 @@ if permission == 'yes':
             results.write(str(change_count) + ' files have been modified to replace '
                           + find_string + ' with ' + replace_string + '.\n')
     print('Done with replacement')
-    end = time.time()
-    print('Program took ' + str(round((end - start), 4)) + ' secs to complete.\n')
     print(str(change_count) + ' Files replaced')
 else:
     print('Find and replace has not been executed')
