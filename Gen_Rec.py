@@ -33,7 +33,7 @@ elif 'abd' in machine:
 else:
     print('Machine Name Error 1:\n  Invalid machine name entered. ')
     sys.exit()
-fullpath = machine_path + program_name + '.mpr'
+fullpath = f'{machine_path}{program_name}.mpr'
 
 
 # These variables equate to L, W, and T in WoodWop
