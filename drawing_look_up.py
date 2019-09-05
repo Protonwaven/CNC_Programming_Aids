@@ -39,7 +39,7 @@ try:
     if int(pyperclip.paste()) >= 6 & int(pyperclip.paste()) <= 8:
         use_clipboard = input('Type 1 to look up ' + str(pyperclip.paste()) + '\nElse, type in the drawing number you '
                                                                               'want to find.\n')
-        if use_clipboard == 1:
+        if use_clipboard == '1':
             drawingNumber = pyperclip.paste().strip()
         else:
             drawingNumber = input(str('Please enter the drawing number you want to find.\n'))
