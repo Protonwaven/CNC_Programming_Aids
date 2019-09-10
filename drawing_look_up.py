@@ -42,7 +42,7 @@ try:
         if use_clipboard == '1':
             drawingNumber = pyperclip.paste().strip()
         else:
-            drawingNumber = input(str('Please enter the drawing number you want to find.\n'))
+            drawingNumber = use_clipboard
     else:
         drawingNumber = input(str('Please enter the drawing number you want to find.\n'))
 except ValueError:
