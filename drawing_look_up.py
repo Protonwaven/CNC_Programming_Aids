@@ -32,9 +32,6 @@ machineNames = [van, jas, fv, BAZ, ABD, BIMA, MORB]
 fileList = {}
 
 # input for drawing look up
-# first option is to use the clipboard. Try/Except to validate input is an integer, and confirm length of input.
-# if clipboard isn't validated or user doesn't confirm look up by entering text, then ask for the drawing number to
-# look up.
 try:
     if int(pyperclip.paste()) >= 6 & int(pyperclip.paste()) <= 8:
         use_clipboard = input('Type 1 to look up ' + str(pyperclip.paste()) + '\nElse, type in the drawing number you '
@@ -79,9 +76,7 @@ while drawingNumber:
     # Ask which machines, if any, the user wants to open the file up from and prompt for next file to look up
     isFileOpen = False
     while any(foundOnMachine):
-        print('Type the line number to open the file or just hit enter to look up a different file.')
-        # Input will be numbers, but they will be treated has strings, not integers.
-        fileToOpen = input(str(''))
+        fileToOpen = input(str('Type the line number to open the file or just hit enter to look up a different file.'))
         if not fileToOpen:
             break
         elif int(fileToOpen) in fileList.keys():
