@@ -30,17 +30,20 @@ for folderName, subfolders, filenames in os.walk(ML4):
             fullpath_mtime = os.path.getmtime(fullpath)
             for path in Machines:
                 ml4_file = os.path.join(path, filename)
-                ml4_file_mtime = os.path.getmtime(ml4_file)
-                # Comparing mtimes to determine which file is newer and if it needs replaced.
-                if ml4_file_mtime < fullpath_mtime:
-                    shutil.copy(fullpath, path)
-                    print('Copying from {} to {}'.format(fullpath, path))
-                    updated_files_counter += 1
+                try:
+                    ml4_file_mtime = os.path.getmtime(ml4_file)
+                    # Comparing mtimes to determine which file is newer and if it needs replaced.
+                    if ml4_file_mtime < fullpath_mtime:
+                        shutil.copy(fullpath, path)
+                        print('Copying from {} to {}'.format(fullpath, path))
+                        updated_files_counter += 1
+                except FileNotFoundError:
+                    pass
 if updated_files_counter >= 1:
-    print('\n{} files have been updated.\n\nNow please send an email to all other programmers to remind them to update '
-          'their folders has well.\n'.format(str(updated_files_counter)))
+    print(f'\n{str(updated_files_counter)} files have been updated.\n\nNow please send an email to all other'
+          f' programmers to remind them to update their folders has well.')
 elif updated_files_counter < 1:
-    print('\nNo files were updated.\n\n')
+    print('\nNo files were updated.')
 
 # Added sleep(12) to allow the user to read the terminal.
 time.sleep(12)
