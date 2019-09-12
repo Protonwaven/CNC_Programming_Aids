@@ -30,8 +30,8 @@ for folderName, subfolders, filenames in os.walk(ML4):
             fullpath_mtime = os.path.getmtime(fullpath)
             for path in Machines:
                 ml4_file = os.path.join(path, filename)
+                ml4_file_mtime = os.path.getmtime(ml4_file)
                 try:
-                    ml4_file_mtime = os.path.getmtime(ml4_file)
                     # Comparing mtimes to determine which file is newer and if it needs replaced.
                     if ml4_file_mtime < fullpath_mtime:
                         shutil.copy(fullpath, path)
