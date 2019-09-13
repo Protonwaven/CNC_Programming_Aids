@@ -67,6 +67,8 @@ while drawingNumber:
         create_file = input('Would you like to create ' + drawingNumber + '?\nOr hit enter to escape.\n')
         try:
             if create_file:
+                with open('handOff.txt', 'w') as handOff:
+                    handOff.write(drawingNumber)
                 os.startfile("C:\\Users\\scasey\\gen_rec2.bat")
             break
         except FileNotFoundError:

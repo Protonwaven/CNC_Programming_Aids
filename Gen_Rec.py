@@ -15,12 +15,28 @@ import mprBlocks
 import os
 import sys
 
-# Programmer's name is stamped on every generated file.
-programmer = 'SCasey'
+program_name = ''
+machine = ''
 
-# Enter machine and based on that selection determine path to save file and options for file generation.
-program_name = input('Please enter the name of the program.\n')
-machine = input('Enter vantech, jasper, ford or abd.\n')
+# The following block with look for a handoff file from the lookup file.
+# If it is found, it will use that data and then delete the file. Else it will
+# ask the user for the infomation.
+if os.path.exists('handOff.txt'):
+    with open('handOff.txt', 'r') as handOff:
+        program_name = handOff.read()
+    # Entering "..." will repromt the user for the input and still delete
+    # the handOff.txt file.
+    machine = input(f'\n\nWhat machine is making'
+                    f' {program_name}?\n'
+                    f'The vantech, jasper, ford or abd.\n')
+    os.remove('handOff.txt')
+    if machine == '...':
+        program_name = input('Please enter the name of the program.\n')
+        machine = input('Enter vantech, jasper, ford or abd.\n')
+else:
+    program_name = input('Please enter the name of the program.\n')
+    machine = input('Enter vantech, jasper, ford or abd.\n')
+
 machine_path = ''
 if 'vantech' in machine:
     machine_path = 'Z:\\Common\\Vantech\\Parts\\'
