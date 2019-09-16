@@ -463,7 +463,7 @@ def pocket():
     x_center = input('Please enter X center.\n')
     y_center = input('Please enter Y center.\n')
     pocket_length = input('Please enter the overall length of the pocket.\n')
-    pocket_width = input('Please enter the overall width of the pocket.\n ')
+    pocket_width = input('Please enter the overall width of the pocket.\n')
     corner_radius = input('Please enter the corner radius of the pocket.\n')
     depth = input('Please enter the depth of the pocket.\n')
     tool = ''
