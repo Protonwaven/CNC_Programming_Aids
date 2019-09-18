@@ -16,7 +16,9 @@ import re
 import sys
 import logging
 
-logging.basicConfig(filename='findAndReplaceString.log', format='%(asctime)s - %(message)s', level=logging.WARNING)
+logging.basicConfig(filename='findAndReplaceString.log',
+                    format='%(asctime)s - ''%(message)s',
+                    level=logging.WARNING)
 
 # Enter path and check input for standard pathway format
 scan_folder = input('Enter the absolute path to scan:\n')
@@ -28,8 +30,10 @@ if mo is None:
 
 os.chdir(scan_folder)
 
-# Decide on multi-line edit. An empty string is False for the Boolean expressions below.
-multi_line = input('If you would like to edit multiple lines, please enter 9, if not, simply hit enter.\n')
+# Decide on multi-line edit. An empty string is False for the Boolean
+# expressions below.
+multi_line = input('If you would like to edit multiple lines, please enter 9, '
+                   'if not, simply hit enter.\n')
 
 # Get find/replaceStrings, and then confirm that inputs are correct.
 find_string = input('Enter the text you wish to find:\n')
@@ -37,8 +41,9 @@ replace_string = input('Enter the text to replace:\n')
 if multi_line == '9':
     find_string = find_string.encode('utf8').decode('unicode_escape')
     replace_string = replace_string.encode('utf8').decode('unicode_escape')
-    print('You will be editing multiple line, please be careful and triple check the confirmation below.'
-          + ' Eliminating certain lines could cause the errors on the machinery. \n')
+    print('You will be editing multiple line, please be careful and triple '
+          'check the confirmation below. Eliminating certain lines could '
+          'cause the errors on the machinery. \n')
 
 permission = input('Please confirm you want to replace: \n'
                    + find_string
