@@ -24,6 +24,6 @@ except ValueError:
 iePosition = (91, 1059)
 
 pyautogui.click(iePosition)
-pyautogui.sleep(2)
+pyautogui.sleep(3)
 pyautogui.hotkey('ctrl', 'v')
 pyautogui.hotkey('enter')
