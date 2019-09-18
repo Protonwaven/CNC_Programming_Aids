@@ -1,9 +1,11 @@
-"""Terminal Based program to create a basic rectangle program. Depending on the machine you enter will prompt for
-different options. Currently supported machines are the Vantechs, Jasper and Fordsville Weeke, and the ABD. After
+"""Terminal Based program to create a basic rectangle program. Depending on the
+ machine you enter will prompt for different options. Currently supported
+ machines are the Vantechs, Jasper and Fordsville Weeke, and the ABD. After
 generating the generated file will open in WoodWop for review.
 
 Inputs:
-    Almost all inputs are numbers, but are treated has string since the generated file is all text.
+    Almost all inputs are numbers, but are treated has string since the
+    generated file is all text.
 
 Outputs:
     A complete ready-to-run MPR file
@@ -18,7 +20,8 @@ import sys
 # Programmer's name is stamped on every generated file.
 programmer = 'SCasey'
 
-# Enter machine and based on that selection determine path to save file and options for file generation.
+# Enter machine and based on that selection determine path to save file and
+# options for file generation.
 program_name = input('Please enter the name of the program.\n')
 machine = input('Enter vantech, jasper, ford or abd.\n')
 machine_path = ''
@@ -42,9 +45,10 @@ width = input('Please enter the width of the part.\n')
 thickness = input('Please enter the thickness of the part.\n')
 
 with open(fullpath, 'w') as f:
-    # This is standard across all machines, "removed + mprBlocks.comment(program_name, programmer, machine "
-    header = (mprBlocks.datahead(length, width, thickness) + mprBlocks.coordsysgenrec()
-              + mprBlocks.workpiece())
+    # This is standard across all machines, "removed
+    # + mprBlocks.comment(program_name, programmer, machine "
+    header = (mprBlocks.datahead(length, width, thickness)
+              + mprBlocks.coordsysgenrec() + mprBlocks.workpiece())
 
     # Only option for abd machine.
     if 'abd' in machine:
@@ -60,9 +64,10 @@ with open(fullpath, 'w') as f:
         while edge:
             abd_output += mprBlocks.abd(edge)
             edge = str(input(edge_selection))
-    # Options for Vantech, Jasper and Fordsville Weeke. Will exclude ABD. Since it cant proform
-    # any of these functions.
-    # Entering a blank line in group_repeat will cause it to move to the next function.
+    # Options for Vantech, Jasper and Fordsville Weeke. Will exclude ABD.
+    # Since it cant proform any of these functions.
+    # Entering a blank line in group_repeat will cause it to move to the
+    # next function.
     elif 'van' or 'jas' or 'for' in machine and 'abd' not in machine:
         group_repeat = input('Do you want to add a vertical drill group?\n')
         drill_type = 'vert'
@@ -72,11 +77,13 @@ with open(fullpath, 'w') as f:
                 break
             drilling = mprBlocks.groupblock(drill_type, machine)
             vert_drilling_output = vert_drilling_output + '\n' + drilling
-            group_repeat = input('Would you like to add another vertical drill group?\n')
+            group_repeat = input('Would you like to add another vertical '
+                                 'drill group?\n')
 
         # The only the Weekes can proform this function.
         if 'jas' or 'for' in machine:
-            group_repeat = input('Do you want to add a horizontal drill group?\n')
+            group_repeat = input('Do you want to add a horizontal '
+                                 'drill group?\n')
             drill_type = 'hor'
             hor_drilling_output = ''
             while group_repeat:
@@ -84,7 +91,8 @@ with open(fullpath, 'w') as f:
                     break
                 drilling = mprBlocks.groupblock(drill_type)
                 hor_drilling_output = hor_drilling_output + '\n' + drilling
-                group_repeat = input('Would you like to add another horizontal drill group?\n')
+                group_repeat = input('Would you like to add another '
+                                     'horizontal drill group?\n')
 
         group_repeat = input('Do you want to add a Fastenlink group?\n')
         drill_type = 'fast'
@@ -94,7 +102,8 @@ with open(fullpath, 'w') as f:
                 break
             drilling = mprBlocks.groupblock(drill_type)
             fastenlink_output = fastenlink_output + '\n' + drilling
-            group_repeat = input('Would you like to add another Fastenlink group?\n')
+            group_repeat = input('Would you like to add another '
+                                 'Fastenlink group?\n')
 
         group_repeat = input('Do you want to add a Pocket?\n')
         pocket_output = ''
@@ -115,6 +124,7 @@ with open(fullpath, 'w') as f:
         text = (header + abd_output + footer + '!')
 
     else:
-        text = (header + vert_drilling_output + hor_drilling_output + fastenlink_output + pocket_output + footer + '!')
+        text = (header + vert_drilling_output + hor_drilling_output
+                + fastenlink_output + pocket_output + footer + '!')
     f.write(str(text))
     os.startfile(fullpath)
