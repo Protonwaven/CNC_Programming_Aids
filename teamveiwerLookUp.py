@@ -23,6 +23,7 @@ except ValueError:
 
 iePosition = (91, 1059)
 
+pyperclip.copy(drawingNumber)
 pyautogui.click(iePosition)
 pyautogui.sleep(3)
 pyautogui.hotkey('ctrl', 'v')
