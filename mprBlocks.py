@@ -541,9 +541,6 @@ def fastenlink(local_coord_sys):
         hole_down = '1'
     elif direction == '4':
         hole_left = '1'
-    else:
-        print('Fastenlink Error 1:\n    Fastenlink direction invalid')
-        sys.exit()
 
     # Compensation for "mirrored" zones selection.
     if local_coord_sys is '1':
